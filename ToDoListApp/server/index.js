@@ -1,0 +1,64 @@
+import express from "express";
+import pg from "pg";
+import cors from "cors";
+
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "toDoList_db",
+  password: "1234567",
+  port: 5432,
+});
+
+db.connect();
+
+const app = express();
+const port = 3000;
+
+const corsOptions = [
+  {
+    origin: "http://localhost:5173",
+  },
+];
+app.use(cors(corsOptions));
+// DI KO ALAM BAKIT GUMAGANA PA RIN KAHIT TINANGGAL KO NA CORS,,
+// uncomment ko na lang, may time na nag nnetwork error eh
+app.use(express.json());
+
+async function getTasks() {
+  try {
+    const tasks = await db.query(
+      "SELECT id, task, status, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM tasks;"
+    );
+    return tasks.rows;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
+async function postTask(task) {
+  try {
+    const result = await db.query("INSERT INTO tasks (task) VALUES ($1)", [
+      task,
+    ]);
+    return result.rowCount > 0;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
+app.get("/datas", async (req, res) => {
+  const tasks = await getTasks();
+  res.json(tasks);
+});
+
+app.post("/datas", async (req, res) => {
+  const { task } = req.body;
+  const result = await postTask(task);
+  res.json(result);
+});
+
+app.listen(port, (err) => {
+  if (err) throw err;
+  console.log(`server running at port ${port}`);
+});
