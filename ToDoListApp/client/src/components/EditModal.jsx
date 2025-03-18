@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import usePostTask from "../services/postTask";
-import useFetchTasks from "../services/fetchTasks";
+import { useState } from "react";
+import usePatchTask from "../services/patchTask";
+function EditModal(props) {
+  const [editTask, setEditTask] = useState(props.task);
+  const [idTask, setIdTask] = useState(props.idTask);
+  const { patchTask } = usePatchTask();
 
-function AddModal(props) {
-  const [task, setTask] = useState("");
-  const { postTask, result } = usePostTask();
-  const { tasks, fetchTasks } = useFetchTasks();
-  function handleClick() {
-    // console.log("saved");
-
-    postTask(task).then(() => {
-      fetchTasks(); // di to gumagana nyahahaha
-    });
+  function handleChangeId(event) {
+    setIdTask(event.target.value);
   }
 
   function handleChange(event) {
-    setTask(event.target.value);
+    setEditTask(event.target.value);
   }
+
+  function handleClick() {
+    patchTask(idTask, editTask);
+  }
+
   return (
     <div
       className="modal show"
@@ -26,7 +26,7 @@ function AddModal(props) {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Add Task</h5>
+            <h5 className="modal-title">Edit Task</h5>
             <button
               type="button"
               className="btn-close"
@@ -40,8 +40,17 @@ function AddModal(props) {
                 type="text"
                 className="form-control"
                 style={{ fontSize: "24px", padding: "12px 16px" }}
+                placeholder="Id"
+                value={idTask}
+                onChange={handleChangeId}
+                disabled
+              />
+              <input
+                type="text"
+                className="form-control"
+                style={{ fontSize: "24px", padding: "12px 16px" }}
                 placeholder="Task"
-                value={task}
+                value={editTask}
                 onChange={handleChange}
               />
             </div>
@@ -71,4 +80,4 @@ function AddModal(props) {
   );
 }
 
-export default AddModal;
+export default EditModal;
