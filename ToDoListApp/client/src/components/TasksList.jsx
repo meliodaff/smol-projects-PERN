@@ -3,11 +3,14 @@ import Tasks from "./TableRows";
 import useFetchTasks from "../services/fetchTasks";
 import { useEffect, useState } from "react";
 import EditModal from "./EditModal";
+import useDoneTask from "../services/doneTask";
+
 function TasksList() {
   const { tasks, fetchTasks } = useFetchTasks();
   const [showEditModal, setShowEditModal] = useState(false);
   const [task, setTask] = useState("");
   const [idTask, setIdTask] = useState("");
+  const { doneTask } = useDoneTask();
   useEffect(() => {
     fetchTasks();
     console.log("fetching tasks");
@@ -29,7 +32,7 @@ function TasksList() {
             thirdButton="Delete"
             firstOnClick={() => {
               //   console.log("first button has been clicked");
-              console.log(task.id);
+              doneTask(task.id);
             }}
             secondOnClick={() => {
               console.log("second button has been clicked");

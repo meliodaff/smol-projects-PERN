@@ -28,7 +28,7 @@ app.use(express.json());
 async function getTasks() {
   try {
     const tasks = await db.query(
-      "SELECT id, task, status, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM tasks ORDER BY id ASC;"
+      "SELECT id, task, status, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM tasks WHERE status = 'Pending' ORDER BY id ASC;"
     );
     return tasks.rows;
   } catch (err) {
@@ -59,6 +59,18 @@ async function editTask(id, task) {
   }
 }
 
+async function doneTask(id) {
+  try {
+    const result = await db.query(
+      "UPDATE tasks SET status = 'Completed' WHERE id = $1",
+      [id]
+    );
+    return result.rowCount > 0;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
 app.get("/datas", async (req, res) => {
   const tasks = await getTasks();
   res.json(tasks);
@@ -73,6 +85,12 @@ app.post("/datas", async (req, res) => {
 app.patch("/datas", async (req, res) => {
   const { id, task } = req.body;
   const result = await editTask(id, task);
+  res.json(result);
+});
+
+app.patch("/done", async (req, res) => {
+  const { id } = req.body;
+  const result = await doneTask(id);
   res.json(result);
 });
 
