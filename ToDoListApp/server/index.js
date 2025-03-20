@@ -71,6 +71,17 @@ async function doneTask(id) {
   }
 }
 
+async function getDoneTasks() {
+  try {
+    const tasks = await db.query(
+      "SELECT id, task, status, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM tasks WHERE status = 'Completed' ORDER BY id ASC;"
+    );
+    return tasks.rows;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
 app.get("/datas", async (req, res) => {
   const tasks = await getTasks();
   res.json(tasks);
@@ -91,6 +102,11 @@ app.patch("/datas", async (req, res) => {
 app.patch("/done", async (req, res) => {
   const { id } = req.body;
   const result = await doneTask(id);
+  res.json(result);
+});
+
+app.get("/DoneTasks", async (req, res) => {
+  const result = await getDoneTasks();
   res.json(result);
 });
 

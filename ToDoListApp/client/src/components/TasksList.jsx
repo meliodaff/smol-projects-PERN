@@ -4,6 +4,7 @@ import useFetchTasks from "../services/fetchTasks";
 import { useEffect, useState } from "react";
 import EditModal from "./EditModal";
 import useDoneTask from "../services/doneTask";
+import TasksDoneModal from "./TasksDoneModal";
 
 function TasksList() {
   const { tasks, fetchTasks } = useFetchTasks();
@@ -14,10 +15,10 @@ function TasksList() {
   useEffect(() => {
     fetchTasks();
     console.log("fetching tasks");
-  }, []);
+  }, [tasks]);
   return (
     <>
-      <table className="table">
+      <table className="table table-success table-bordered table-l">
         <TableHeader />
         {tasks.map((task, index) => (
           <Tasks

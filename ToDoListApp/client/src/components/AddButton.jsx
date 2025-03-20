@@ -4,10 +4,8 @@ import useFetchTasks from "../services/fetchTasks";
 
 function AddButton() {
   const [showModal, setShowModal] = useState(false);
-  const { tasks, fetchTasks } = useFetchTasks();
 
   function handleClick() {
-    // console.log("added");
     setShowModal(true);
   }
 

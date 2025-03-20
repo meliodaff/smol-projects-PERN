@@ -1,5 +1,6 @@
 import TasksList from "./TasksList";
 import AddButton from "./AddButton";
+import ViewButton from "./ViewButton";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         }}
       >
         <AddButton />
+        <ViewButton />
       </div>
       <TasksList />
     </>
