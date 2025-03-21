@@ -4,7 +4,7 @@ import useFetchTasks from "../services/fetchTasks";
 import { useEffect, useState } from "react";
 import EditModal from "./EditModal";
 import useDoneTask from "../services/doneTask";
-import TasksDoneModal from "./TasksDoneModal";
+import DoneModal from "./DoneModal";
 
 function TasksList() {
   const { tasks, fetchTasks } = useFetchTasks();
@@ -12,10 +12,17 @@ function TasksList() {
   const [task, setTask] = useState("");
   const [idTask, setIdTask] = useState("");
   const { doneTask } = useDoneTask();
+  const [showDoneModal, setShowDoneModal] = useState(false);
+  const [markAsDoneID, setMarkAsDoneID] = useState();
+  const [markAsDoneTask, setMarkAsDoneTask] = useState("");
   useEffect(() => {
     fetchTasks();
     console.log("fetching tasks");
-  }, [tasks]);
+  }, []);
+
+  function handleDone() {
+    doneTask(markAsDoneID);
+  }
   return (
     <>
       <table className="table table-success table-bordered table-l">
@@ -32,8 +39,11 @@ function TasksList() {
             secondButton="Edit"
             thirdButton="Delete"
             firstOnClick={() => {
-              //   console.log("first button has been clicked");
-              doneTask(task.id);
+              console.log("first button has been clicked");
+              // doneTask(task.id);
+              setShowDoneModal(true);
+              setMarkAsDoneID(task.id);
+              setMarkAsDoneTask(task.task);
             }}
             secondOnClick={() => {
               console.log("second button has been clicked");
@@ -50,6 +60,13 @@ function TasksList() {
           idTask={idTask}
           task={task}
           onClose={() => setShowEditModal(false)}
+        />
+      )}
+      {showDoneModal && (
+        <DoneModal
+          task={markAsDoneTask}
+          onClick={() => setShowDoneModal(false)}
+          handleDone={handleDone}
         />
       )}
     </>
