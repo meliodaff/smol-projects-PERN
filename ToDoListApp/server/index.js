@@ -82,6 +82,29 @@ async function getDoneTasks() {
   }
 }
 
+async function deleteTask(id) {
+  try {
+    const response = await db.query(
+      "UPDATE tasks SET status = 'Removed' WHERE id = $1",
+      [id]
+    );
+    return response.rowCount > 0;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
+async function fetchDeletedTasks() {
+  try {
+    const response = await db.query(
+      "SELECT id, task, status, TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at FROM tasks WHERE status = 'Removed' ORDER BY id ASC;"
+    );
+    return response.rows;
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
 app.get("/datas", async (req, res) => {
   const tasks = await getTasks();
   res.json(tasks);
@@ -105,8 +128,19 @@ app.patch("/done", async (req, res) => {
   res.json(result);
 });
 
+app.delete("/datas", async (req, res) => {
+  const { id } = req.body;
+  const result = await deleteTask(id);
+  res.json(result);
+});
+
 app.get("/DoneTasks", async (req, res) => {
   const result = await getDoneTasks();
+  res.json(result);
+});
+
+app.get("/DeletedTasks", async (req, res) => {
+  const result = await fetchDeletedTasks();
   res.json(result);
 });
 

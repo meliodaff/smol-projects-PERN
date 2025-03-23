@@ -28,7 +28,7 @@ function TasksDoneModal(props) {
             </div>
             <form>
               <div className="modal-body">
-                <table className="table table-info">
+                <table className="table table-success">
                   <thead>
                     <tr>
                       <th scope="col">#</th>

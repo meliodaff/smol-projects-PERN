@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useFetchDoneTasks from "../services/fetchDoneTasks";
 import TasksDoneModal from "./TasksDoneModal";
 
 function ViewButton() {

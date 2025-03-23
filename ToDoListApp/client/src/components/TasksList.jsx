@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import EditModal from "./EditModal";
 import useDoneTask from "../services/doneTask";
 import DoneModal from "./DoneModal";
+import DeleteModal from "./DeleteModal";
+import useDeleteTask from "../services/deleteTask";
 
 function TasksList() {
   const { tasks, fetchTasks } = useFetchTasks();
@@ -15,17 +17,21 @@ function TasksList() {
   const [showDoneModal, setShowDoneModal] = useState(false);
   const [markAsDoneID, setMarkAsDoneID] = useState();
   const [markAsDoneTask, setMarkAsDoneTask] = useState("");
+  const [deleteId, setDeleteId] = useState();
+  const [deleteTask, setDeleteTask] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { result, deleteTask1 } = useDeleteTask();
   useEffect(() => {
     fetchTasks();
     console.log("fetching tasks");
-  }, []);
+  }, [tasks]);
 
   function handleDone() {
     doneTask(markAsDoneID);
   }
   return (
     <>
-      <table className="table table-success table-bordered table-l">
+      <table className="table table-bordered table-l">
         <TableHeader />
         {tasks.map((task, index) => (
           <Tasks
@@ -51,7 +57,12 @@ function TasksList() {
               setIdTask(task.id);
               setTask(task.task);
             }}
-            thirdOnClick={() => {}}
+            thirdOnClick={() => {
+              console.log("third button has been clicked");
+              setShowDeleteModal(true);
+              setDeleteId(task.id);
+              setDeleteTask(task.task);
+            }}
           />
         ))}
       </table>
@@ -67,6 +78,16 @@ function TasksList() {
           task={markAsDoneTask}
           onClick={() => setShowDoneModal(false)}
           handleDone={handleDone}
+        />
+      )}
+      {showDeleteModal && (
+        <DeleteModal
+          onClose={() => setShowDeleteModal(false)}
+          deleteTask={deleteTask}
+          handleDelete={() => {
+            deleteTask1(deleteId);
+            console.log("im here");
+          }}
         />
       )}
     </>
