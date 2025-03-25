@@ -4,7 +4,7 @@ function Input(props) {
       <input
         type="search"
         className="form-control form-control-dark text-bg-dark"
-        placeholder="Search..."
+        placeholder={props.placeholder}
         aria-label="Search"
         value={props.input}
         onChange={props.getUserInput}

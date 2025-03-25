@@ -3,3 +3,9 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+
+.input-tag::placeholder{
+    color: white;
+    opacity: 1;
+}

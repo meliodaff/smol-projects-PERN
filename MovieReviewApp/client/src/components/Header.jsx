@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import Input from "./Input";
-function Header() {
-  const [input, setInput] = useState("batman");
+function Header({ userInput }) {
+  const [input, setInput] = useState("");
+
   function getUserInput(event) {
     setInput(event.target.value);
-    return { input };
+    userInput(event.target.value); // step 1: the value from the input is being passed in my set state argument
   }
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
+
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -62,8 +61,8 @@ function Header() {
           >
             <input
               type="search"
-              className="form-control form-control-dark text-bg-dark"
-              placeholder="Search..."
+              className="form-control form-control-dark text-bg-dark input-tag"
+              placeholder="Movie Name"
               aria-label="Search"
               value={input}
               onChange={getUserInput}
