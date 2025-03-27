@@ -4,7 +4,7 @@ function Loading() {
       <div className="px-4 py-5 my-5 text-center">
         <img
           class="d-block mx-auto mb-4"
-          src="../public/assets/images/loadingFilmLogo.png"
+          src="/assets/images/loadingFilmLogo.png"
           alt=""
           width="72"
           height="57"
