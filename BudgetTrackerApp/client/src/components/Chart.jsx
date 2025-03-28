@@ -9,9 +9,9 @@ import {
   ArcElement,
   PointElement,
   LineElement,
+  RadialLinearScale,
 } from "chart.js";
-import { Bar, Doughnut } from "react-chartjs-2";
-
+import sourceData from "../data/sourceData.json";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,25 +21,33 @@ ChartJS.register(
   Legend,
   ArcElement,
   PointElement,
-  LineElement
+  LineElement,
+  RadialLinearScale
 );
 function Chart(props) {
+  console.log(sourceData[0].data);
   return (
     <>
       <div>
         <props.type
           data={{
-            labels: ["A", "B", "C"],
+            labels: sourceData.map((value) => value.source),
             datasets: [
               {
-                label: "Salary",
-                data: [200, 300, 400],
-                backgroundColor: ["rgba(0, 0, 255, 1)"],
+                label: "Income",
+                data: sourceData.map((value) => value.income),
+                // data: [10000, 5000, 2000],
+                backgroundColor: ["rgba(0, 0, 255, .2)"],
+                borderColor: "rgb(0, 0, 255)",
+                borderRadius: 5,
+                borderWidth: 1,
               },
               {
                 label: "Expenses",
-                data: [50, 400, 80],
-                backgroundColor: ["rgba(255, 0, 0, 1)"],
+                data: sourceData.map((value) => value.expenses),
+                backgroundColor: ["rgba(255, 0, 0, .2)"],
+                borderColor: "rgb(255, 0, 0)",
+                borderWidth: 1,
               },
             ],
           }}

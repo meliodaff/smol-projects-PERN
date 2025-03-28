@@ -1,0 +1,17 @@
+[
+    {
+        "source": "full-time work",
+        "income": "10000",
+        "expenses": "6000"
+    },
+    {
+        "source": "investments",
+        "income": "5000",
+        "expenses": "4000"
+    },
+    {
+        "source": "business",
+        "income": "2000",
+        "expenses": "500"
+    }
+]

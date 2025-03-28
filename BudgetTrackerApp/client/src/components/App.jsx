@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 import Chart from "./Chart";
-import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Pie, Bubble, PolarArea } from "react-chartjs-2";
 function App() {
   return (
     <>
@@ -15,6 +15,15 @@ function App() {
           </div>
           <div className="chart-container">
             <Chart type={Line} />
+          </div>
+          <div className="chart-container">
+            <Chart type={Pie} />
+          </div>
+          <div className="chart-container">
+            <Chart type={Bubble} />
+          </div>
+          <div className="chart-container">
+            <Chart type={PolarArea} />
           </div>
         </div>
       </div>
