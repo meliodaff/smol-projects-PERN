@@ -1,45 +1,48 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 function Sidebar() {
+  const location = useLocation();
   return (
     <>
       <div
         className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"
-        style={{ width: "280px", height: "100vh", display: "flex" }}
+        style={{
+          width: "280px",
+          height: "100vh",
+          display: "flex",
+          position: "fixed",
+          left: 0,
+        }}
       >
         <a
           href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
         >
-          <svg className="bi pe-none me-2" width="40" height="32">
-            <use xlinkHref="#bootstrap"></use>
-          </svg>
           <span className="fs-4">Budget Tracker</span>
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
-            <a href="#" className="nav-link active" aria-current="page">
-              <i className="bi bi-house-door me-2"></i> Home
-            </a>
+            <Link
+              className={
+                location.pathname === "/" ? "nav-link active" : "nav-link"
+              }
+              to="/"
+            >
+              <i className="bi bi-house-door me-2"></i> Dashboard
+            </Link>
           </li>
           <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <i className="bi bi-speedometer2 me-2"></i> Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <i className="bi bi-table me-2"></i> Orders
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <i className="bi bi-box me-2"></i> Products
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <i className="bi bi-people me-2"></i> Customers
-            </a>
+            <Link
+              className={
+                location.pathname === "/Analysis"
+                  ? "nav-link  active"
+                  : "nav-link "
+              }
+              to="/Analysis"
+            >
+              <i className="bi bi-speedometer2 me-2"></i> Analysis
+            </Link>
           </li>
         </ul>
         <hr />

@@ -25,7 +25,7 @@ ChartJS.register(
   RadialLinearScale
 );
 function Chart(props) {
-  console.log(sourceData[0].data);
+  // console.log(sourceData[0].data);
   return (
     <>
       <div>
@@ -45,9 +45,10 @@ function Chart(props) {
               {
                 label: "Expenses",
                 data: sourceData.map((value) => value.expenses),
-                backgroundColor: ["rgba(255, 0, 0, .2)"],
+                backgroundColor: ["rgba(255, 0, 0, .1)"],
                 borderColor: "rgb(255, 0, 0)",
                 borderWidth: 1,
+                borderRadius: 5,
               },
             ],
           }}

@@ -1,0 +1,12 @@
+import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=dba44211"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=dba44211"; const React = __vite__cjsImport1_react.__esModule ? __vite__cjsImport1_react.default : __vite__cjsImport1_react;
+import __vite__cjsImport2_reactDom_client from "/node_modules/.vite/deps/react-dom_client.js?v=dba44211"; const ReactDOM = __vite__cjsImport2_reactDom_client.__esModule ? __vite__cjsImport2_reactDom_client.default : __vite__cjsImport2_reactDom_client;
+import App from "/src/components/App.jsx?t=1743258524904";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(/* @__PURE__ */ jsxDEV(App, {}, void 0, false, {
+  fileName: "C:/Users/Jv Bialen/Documents/GitHub/smol-projects-PERN/BudgetTrackerApp/client/src/index.jsx",
+  lineNumber: 7,
+  columnNumber: 13
+}, this));
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBTVk7QUFOWixPQUFPQSxXQUFXO0FBQ2xCLE9BQU9DLGNBQWM7QUFDckIsT0FBT0MsU0FBUztBQUVoQixNQUFNQyxPQUFPRixTQUFTRyxXQUFXQyxTQUFTQyxlQUFlLE1BQU0sQ0FBQztBQUVoRUgsS0FBS0ksT0FBTyx1QkFBQyxTQUFEO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FBSSxDQUFHIiwibmFtZXMiOlsiUmVhY3QiLCJSZWFjdERPTSIsIkFwcCIsInJvb3QiLCJjcmVhdGVSb290IiwiZG9jdW1lbnQiLCJnZXRFbGVtZW50QnlJZCIsInJlbmRlciJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJpbmRleC5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xyXG5pbXBvcnQgUmVhY3RET00gZnJvbSBcInJlYWN0LWRvbS9jbGllbnRcIjtcclxuaW1wb3J0IEFwcCBmcm9tIFwiLi9jb21wb25lbnRzL0FwcFwiO1xyXG5cclxuY29uc3Qgcm9vdCA9IFJlYWN0RE9NLmNyZWF0ZVJvb3QoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJyb290XCIpKTtcclxuXHJcbnJvb3QucmVuZGVyKDxBcHAgLz4pO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL0p2IEJpYWxlbi9Eb2N1bWVudHMvR2l0SHViL3Ntb2wtcHJvamVjdHMtUEVSTi9CdWRnZXRUcmFja2VyQXBwL2NsaWVudC9zcmMvaW5kZXguanN4In0=
