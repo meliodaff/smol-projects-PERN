@@ -12,6 +12,8 @@ function Sidebar() {
           display: "flex",
           position: "fixed",
           left: 0,
+          top: 0,
+          bottom: 0,
         }}
       >
         <a
@@ -29,7 +31,7 @@ function Sidebar() {
               }
               to="/"
             >
-              <i className="bi bi-house-door me-2"></i> Dashboard
+              <i className="bi bi-house-door me-2"></i> Records
             </Link>
           </li>
           <li>
@@ -60,7 +62,7 @@ function Sidebar() {
               height="32"
               className="rounded-circle me-2"
             />
-            <strong>mdo</strong>
+            <strong>!jay</strong>
           </a>
           <ul className="dropdown-menu text-small shadow">
             <li>

@@ -14,3 +14,21 @@ body{
 .text-dark{
     color: black;
 }
+
+.add-button-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.add-button{
+    border: 1px solid limegreen;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
