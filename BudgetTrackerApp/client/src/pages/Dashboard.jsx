@@ -1,20 +1,19 @@
 import Sidebar from "../components/Sidebar";
+import AddButton from "../components/AddButton";
 import AddModal from "../components/AddModal";
-import AddExpenseModal from "../components/AddExpenseModal";
 import { useState } from "react";
 function Dashboard() {
-  const [showAddModal, setShowAddModal] = useState(false);
+  const [showAddButton, setShowAddButton] = useState(false);
   return (
     <>
       <Sidebar />
-      <AddModal
+      {/* this should be AddButton */}
+      <AddButton
         onClick={() => {
-          setShowAddModal(true);
+          setShowAddButton(true);
         }}
       />
-      {showAddModal && (
-        <AddExpenseModal onClose={() => setShowAddModal(false)} />
-      )}
+      {showAddButton && <AddModal onClose={() => setShowAddButton(false)} />}
     </>
   );
 }

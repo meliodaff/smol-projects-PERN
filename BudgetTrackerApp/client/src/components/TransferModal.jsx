@@ -1,15 +1,15 @@
-function AddExpenseModal(props) {
+function TransferModal(props) {
   return (
     <>
       <div
         className="modal"
         tabIndex="-1"
-        style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        style={{ display: "block", backgroundColor: "rgba(0, 0, 0, .5)" }}
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Modal title</h5>
+              <h5 className="modal-title">Im the transfer modal</h5>
               <button
                 type="button"
                 className="btn-close"
@@ -41,4 +41,4 @@ function AddExpenseModal(props) {
   );
 }
 
-export default AddExpenseModal;
+export default TransferModal;
