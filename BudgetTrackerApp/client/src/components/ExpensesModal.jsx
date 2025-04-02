@@ -1,8 +1,12 @@
 import { useState } from "react";
 import AccountModal from "./AccountModal";
+import CategoryModal from "./CategoryModal";
+import Input from "./Input";
 function IncomeModal(props) {
   const [showAccountModal, setShowAccountModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [accountValue, setAccountValue] = useState("Account");
+  const [categoryValue, setCategoryValue] = useState("Category");
 
   return (
     <>
@@ -34,12 +38,17 @@ function IncomeModal(props) {
                   Account
                 </button>
               </div>
-              <div className="category-container"></div>
-              <button className="btn category-btn">
-                <img src="/images/table-list-solid.svg" />
-                Category
-              </button>
+              <div className="category-container">
+                <button
+                  className="btn category-btn"
+                  onClick={() => setShowCategoryModal(true)}
+                >
+                  <img src="/images/table-list-solid.svg" />
+                  Category
+                </button>
+              </div>
             </div>
+            <Input accountValue={accountValue} categoryValue={categoryValue} />
             <div className="modal-footer">
               <button
                 type="button"
@@ -57,7 +66,16 @@ function IncomeModal(props) {
         </div>
       </div>
       {showAccountModal && (
-        <AccountModal onClose={() => setShowAccountModal(false)} />
+        <AccountModal
+          setAccountValue={setAccountValue}
+          onClose={() => setShowAccountModal(false)}
+        />
+      )}
+      {showCategoryModal && (
+        <CategoryModal
+          setCategoryValue={setCategoryValue}
+          onClose={() => setShowCategoryModal(false)}
+        />
       )}
     </>
   );

@@ -16,13 +16,7 @@ function AddModal(props) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <button onClick={() => setShowIncomeModal(true)}>Income</button>
-              <button onClick={() => setShowExpensesModal(true)}>
-                Expenses
-              </button>
-              <button onClick={() => setShowTransferModal(true)}>
-                Transfer
-              </button>
+              <p>im the add modal</p>
               <button
                 type="button"
                 className="btn-close"
@@ -31,8 +25,25 @@ function AddModal(props) {
                 onClick={props.onClose}
               ></button>
             </div>
-            <div className="modal-body">
-              <p>Modal body text goes here.</p>
+            <div className="modal-body body-container">
+              <button
+                className="btn btn-success icon-btn"
+                onClick={() => setShowIncomeModal(true)}
+              >
+                Income
+              </button>
+              <button
+                className="btn btn-danger icon-btn"
+                onClick={() => setShowExpensesModal(true)}
+              >
+                Expenses
+              </button>
+              <button
+                className="btn btn-warning icon-btn"
+                onClick={() => setShowTransferModal(true)}
+              >
+                Transfer
+              </button>
             </div>
             <div className="modal-footer">
               <button
@@ -42,9 +53,6 @@ function AddModal(props) {
                 onClick={props.onClose}
               >
                 Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
               </button>
             </div>
           </div>
