@@ -11,5 +11,11 @@
   "keywords": [],
   "author": "Jv Bialen",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

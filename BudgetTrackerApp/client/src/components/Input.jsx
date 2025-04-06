@@ -19,9 +19,21 @@ function Input(props) {
           value={props.categoryValue || ""}
         />
       </div>
-      <textarea className="text-area" placeholder="add notes"></textarea>
+      <textarea
+        className="text-area"
+        placeholder="add notes"
+        value={props.notesValue}
+        onChange={(event) => props.setNotesValue(event.target.value)}
+      ></textarea>
       <div className="input-money-container">
-        <input type="number" className="input input-money" placeholder="₱0" />
+        <input
+          type="number"
+          className="input input-money"
+          placeholder="₱0"
+          required
+          value={props.expenseValue}
+          onChange={(event) => props.setExpenseValue(event.target.value)}
+        />
       </div>
     </>
   );

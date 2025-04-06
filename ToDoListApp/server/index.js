@@ -1,19 +1,22 @@
 import express from "express";
 import pg from "pg";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "toDoList_db",
-  password: "1234567",
-  port: 5432,
+  user: process.env.USERDB,
+  host: process.env.HOSTDB,
+  database: process.env.DB,
+  password: process.env.PASSWORDDB,
+  port: process.env.PORTDB,
 });
 
 db.connect();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 const corsOptions = [
   {

@@ -1,12 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountModal from "./AccountModal";
 import CategoryModal from "./CategoryModal";
 import Input from "./Input";
+import useInsertExpense from "../services/useInsertExpense";
+
 function IncomeModal(props) {
   const [showAccountModal, setShowAccountModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [accountValue, setAccountValue] = useState("Account");
   const [categoryValue, setCategoryValue] = useState("Category");
+  const [notesValue, setNotesValue] = useState("");
+  const [expenseValue, setExpenseValue] = useState("");
+  const [save, setSave] = useState(false);
+  const { response, insertExpense } = useInsertExpense();
+
+  async function handleInsertExpense() {
+    console.log("clicked");
+    const data = {
+      account: accountValue,
+      category: categoryValue,
+      notes: notesValue,
+      expense: expenseValue,
+    };
+    await insertExpense(data).then(() => {
+      console.log(response); // LAGING UNDEFINED TO BASED DUN SA USEINSERTEXPENSE STATE NYA
+      if (response) {
+        console.log("successfully inserted");
+      } else {
+        console.log("something went wrong");
+      }
+      props.onClose();
+    });
+  }
+
+  // fix this at home
+  useEffect(() => {
+    console.log(accountValue);
+    console.log(categoryValue);
+    if (accountValue !== "Account" && categoryValue !== "Category") {
+      console.log(accountValue);
+      console.log(categoryValue);
+      setSave(true);
+    } else if (!accountValue && !categoryValue) {
+      setSave(false);
+    }
+    console.log(response);
+  }, [response]);
 
   return (
     <>
@@ -48,7 +87,14 @@ function IncomeModal(props) {
                 </button>
               </div>
             </div>
-            <Input accountValue={accountValue} categoryValue={categoryValue} />
+            <Input
+              accountValue={accountValue}
+              categoryValue={categoryValue}
+              notesValue={notesValue}
+              expenseValue={expenseValue}
+              setNotesValue={setNotesValue}
+              setExpenseValue={setExpenseValue}
+            />
             <div className="modal-footer">
               <button
                 type="button"
@@ -58,9 +104,26 @@ function IncomeModal(props) {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleInsertExpense}
+              >
                 Save changes
               </button>
+              {/* {save ? (
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleInsertExpense}
+                >
+                  Save changes
+                </button>
+              ) : (
+                <button type="button" className="btn btn-primary" disabled>
+                  Save changes
+                </button>
+              )} */}
             </div>
           </div>
         </div>
@@ -82,3 +145,4 @@ function IncomeModal(props) {
 }
 
 export default IncomeModal;
+// LAGYAN NG VALIDATION NA DAPAT REQUIRED LAGYAN NG EXPENSE OR DAPAT MORE THAN OR EQUAL 1 YUNG VALUE. LAGYAN DIN NG MODAL KUNG SUCCESSFULLY INSERTED BA YUNG DATAS NATIN AND KUNG HINDI
