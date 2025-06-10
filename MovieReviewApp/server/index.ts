@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://movie-app-review-jeyv.netlify.app/",
+      "https://movie-app-review-jeyv.netlify.app",
     ],
   })
 );
