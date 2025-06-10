@@ -10,12 +10,11 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://movie-review-app-jeyv.netlify.app",
-    ],
+    origin: process.env.ALLOWED_HOSTS?.split(","),
   })
 );
+
+console.log(process.env.ALLOWED_HOSTS?.split(","));
 
 app.get("/", (req, res) => {
   res.send("Server is up");
