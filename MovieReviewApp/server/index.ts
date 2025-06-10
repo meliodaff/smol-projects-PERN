@@ -13,6 +13,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://movie-app-review-jeyv.netlify.app",
+      "https://lil-cozy.netlify.app/",
     ],
   })
 );
