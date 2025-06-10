@@ -17,6 +17,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Server is up");
+});
+
 app.post("/movies", async (req, res) => {
   const { userInput } = req.body;
   try {
