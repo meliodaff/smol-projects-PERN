@@ -10,7 +10,7 @@ function useFetchMovies(userInput) {
     try {
       console.log(userInput);
       const result = await axios.post(
-        `http://localhost:3000/movies`,
+        `https://movie-review-backend.onrender.com/movies`,
         { userInput } // and ipapasa sya dito para filter yung mga movies na hinahanap natin
       );
       setMovies(result.data.message.Search);

@@ -7,9 +7,12 @@ function useFetchMovie(certainMovie) {
   async function fetchMovie() {
     setLoading(true);
     try {
-      const result = await axios.post(`http://localhost:3000/movie`, {
-        certainMovie,
-      });
+      const result = await axios.post(
+        `https://movie-review-backend.onrender.com/movie`,
+        {
+          certainMovie,
+        }
+      );
       setMovie(result.data.message);
     } catch (err) {
       console.log(err.stack);
