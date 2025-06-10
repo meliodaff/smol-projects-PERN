@@ -15,7 +15,7 @@ function useFetchMovie(certainMovie) {
       );
       setMovie(result.data.message);
     } catch (err) {
-      console.log(err.stack);
+      console.log(err);
     }
     setLoading(false);
   }
