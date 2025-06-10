@@ -8,7 +8,7 @@ function useFetchMovie(certainMovie) {
     setLoading(true);
     try {
       const result = await axios.post(
-        `https://smol-projects-pern.onrender.com/movie`,
+        `https://prod-api.movie-review-app-jeyv.onrender.com/movie`,
         // "http://localhost:3000/movie",
         {
           certainMovie,
