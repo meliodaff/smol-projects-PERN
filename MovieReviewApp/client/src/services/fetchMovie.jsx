@@ -7,10 +7,10 @@ function useFetchMovie(certainMovie) {
   async function fetchMovie() {
     setLoading(true);
     try {
-      const result = await axios.get(
-        `http://www.omdbapi.com/?apikey=12898704&t=${certainMovie}`
-      );
-      setMovie(result.data);
+      const result = await axios.post(`http://localhost:3000/movie`, {
+        certainMovie,
+      });
+      setMovie(result.data.message);
     } catch (err) {
       console.log(err.stack);
     }

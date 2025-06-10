@@ -8,12 +8,14 @@ function useFetchMovies(userInput) {
   async function fetchMovies() {
     setLoading(true);
     try {
-      const result = await axios.get(
-        `http://www.omdbapi.com/?apikey=12898704&s=${userInput}` // and ipapasa sya dito para filter yung mga movies na hinahanap natin
+      console.log(userInput);
+      const result = await axios.post(
+        `http://localhost:3000/movies`,
+        { userInput } // and ipapasa sya dito para filter yung mga movies na hinahanap natin
       );
-      setMovies(result.data.Search);
+      setMovies(result.data.message.Search);
     } catch (err) {
-      console.log(err.stack);
+      console.log(err);
     }
     setLoading(false);
   }
